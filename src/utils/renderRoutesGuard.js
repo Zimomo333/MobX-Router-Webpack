@@ -1,4 +1,4 @@
-import store from '../redux/store'
+import store from '../store'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Route, Redirect, Switch } from 'react-router-dom'
@@ -38,7 +38,7 @@ export default function renderRoutes(routes, extraProps, switchProps) {
         strict: route.strict,
         render: function render(props) {
           // 若已登录 或 为登陆页面 则渲染组件
-          if( typeof(store.getState().token) !== 'undefined' || route.path === '/login' ){
+          if( typeof(store.token) !== 'undefined' || route.path === '/login' ){
             return route.render ? route.render(_extends({}, props, {}, extraProps, {
                 route: route
             })) : React.createElement(route.component, _extends({}, props, extraProps, {

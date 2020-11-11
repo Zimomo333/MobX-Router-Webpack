@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Form, Input, Button } from 'antd';
-import { login } from '../redux/action'
-import store from '../redux/store'
+import store from '../store'
 
 import { createHashHistory } from 'history';
 
@@ -25,7 +24,7 @@ const tailLayout = {
 export default class Login extends React.Component {
 
     onFinish = (values) => {
-      store.dispatch(login(values)()).then(()=>{    // 注意二次封装函数调用方式，login(values)()
+      store.login(values).then(()=>{    // 注意二次封装函数调用方式，login(values)()
         createHashHistory().push('/')
       })
     };

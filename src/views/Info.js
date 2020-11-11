@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from '../redux/store'
-import { getInfo } from '../redux/action'
+import store from '../store'
 
 export default class Info extends React.Component {
     constructor(props) {
@@ -13,10 +12,10 @@ export default class Info extends React.Component {
     }
 
     componentDidMount(){
-        store.dispatch(getInfo()).then(() =>
+        store.getInfo().then(() =>
             this.setState({
-                name: store.getState().name,
-                avatar: store.getState().avatar
+                name: store.name,
+                avatar: store.avatar
             })
         )
     }

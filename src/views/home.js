@@ -6,8 +6,7 @@ import renderRoutes from '../utils/renderRoutesGuard';
 import { Link } from "react-router-dom";
 import routes from '../router'
 
-import store from '../redux/store'
-import { logout } from '../redux/action'
+import store from '../store'
 import { createHashHistory } from 'history';
 
 import { MenuUnfoldOutlined, MenuFoldOutlined, DownOutlined } from '@ant-design/icons';
@@ -30,7 +29,7 @@ export default class App extends React.Component {
     };
 
     onClicklogout = () => {
-        store.dispatch(logout()).then(()=> {
+        store.logout().then(()=> {
             createHashHistory().push('/login');
         })
     }

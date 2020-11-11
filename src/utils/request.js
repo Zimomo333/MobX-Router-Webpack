@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { message, Modal } from 'antd';
-import store from '../redux/store'
+import store from '../store'
 import { getToken } from './auth'
 
 // create an axios instance
@@ -15,7 +15,7 @@ service.interceptors.request.use(
   config => {
     // do something before request is sent
 
-    if (store.getState().token) {
+    if (store.token) {
       // let each request carry token
       // ['X-Token'] is a custom headers key
       // please modify it according to the actual situation
