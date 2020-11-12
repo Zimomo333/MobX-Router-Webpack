@@ -36,6 +36,8 @@ npm i react-router-dom -S		// 核心库
 npm i react-router-config -S	// 官方路由配置助手(类似Vue Router，集中配置式路由)
 
 npm i mobx -S
+npm i mobx-react -S             // 支持Class组件
+// npm i mobx-react-lite -S     // 只支持函数组件
 
 npm i axios -S
 npm i js-cookie -S

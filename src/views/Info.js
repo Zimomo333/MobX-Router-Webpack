@@ -1,31 +1,27 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import store from '../store'
-
-export default class Info extends React.Component {
+import { observer } from 'mobx-react'
+const Info = observer(
+  class Info extends React.Component {
     constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            avatar: ''
-        };
+      super(props)
     }
 
-    componentDidMount(){
-        store.getInfo().then(() =>
-            this.setState({
-                name: store.name,
-                avatar: store.avatar
-            })
-        )
+    componentDidMount() {
+      store.getInfo().then(() => console.log('获取用户信息成功！'))
     }
 
     render() {
-        return (
-            <div>
-                <h3>I am { this.state.name }</h3>
-                <h3>avatar: { this.state.avatar }</h3>
-            </div>
-        )
+      return (
+        <div>
+          <h3>I am {store.name}</h3>
+          <h3>avatar: {store.avatar}</h3>
+          <h3>在线时长: {store.onlineTime} 秒</h3>
+        </div>
+      )
     }
-}
+  }
+)
+
+export default Info

@@ -14,6 +14,7 @@ class Store {
   token = getToken()
   name = ''
   avatar = ''
+  onlineTime = 0
 
   constructor() {
     makeAutoObservable(this)
@@ -74,8 +75,16 @@ class Store {
         })
     })
   }
+
+  increaseTimer() {
+    this.onlineTime += 1
+  }
 }
 
 const store = new Store()
+
+setInterval(() => {
+  store.increaseTimer()
+}, 1000)
 
 export default store
