@@ -1,11 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import store from '../store'
 import { observer } from 'mobx-react'
+import { StoreContext } from '../index'
+
+import store from '../store'
 const Info = observer(
   class Info extends React.Component {
     constructor(props) {
       super(props)
+      Info.contextType = StoreContext
+      this.store = this.context
     }
 
     componentDidMount() {
